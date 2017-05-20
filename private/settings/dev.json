@@ -1,9 +1,11 @@
+Meteor.absoluteUrl.defaultOptions.rootUrl="https://meteor.trive.news"
+
 {
     "environment": "dev",
 
     "public": {
         "ga": {
-            "id": "UA-XXXXXXXX-1"
+            "id": "UA-97914674-2"
         },
         "mixpanel": {
             "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -12,12 +14,12 @@
     },
     "serviceConfigurations": {
         "facebook": {
-            "appId": "b5bd8744275104d",
-            "secret": "7fca074e2399419013545919090850ce"
+            "appId": "237186756761005",
+            "secret": "ae85ea10503073c32dbbafffe24a2b32"
         },
         "google": {
-          "clientId" : "xxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
-          "secret" : "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "clientId" : "670091367171-cddi0eedv540ahlh6bao7t1apdf5i67q.apps.googleusercontent.com",
+          "secret" : "yOXhykecfqutMXUsvn7AfYf_",
           "loginStyle" : "popup"
         }
     }

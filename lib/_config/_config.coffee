@@ -4,7 +4,7 @@
 @Config =
 
 	# Basic Details
-	name: 'My App'
+	name: 'Trive'
 	title: ->
 			TAPi18n.__ 'configTitle'
 	subtitle: ->
@@ -21,36 +21,36 @@
 
 	# Username - if true, users are forced to set a username
 	username: false
-	
+
 	# Localisation
 	defaultLanguage: 'en'
 	dateFormat: 'D/M/YYYY'
 
 	# Meta / Extenrnal content
-	privacyUrl: 'http://meteorfactory.io'
-	termsUrl: 'http://meteorfactory.io'
+	privacyUrl: 'http://trive.news'
+	termsUrl: 'http://trive.news'
 
 	# For email footers
 	legal:
-		address: 'Jessnerstrasse 18, 12047 Berlin'
-		name: 'Meteor Factory'
-		url: 'http://benjaminpeterjones.com'
+		address: 'Eichenstrasse 30, 6015 Luzern, Switzerland'
+		name: 'Orbit GmbH'
+		url: 'http://orbit.mn'
 
-	about: 'http://meteorfactory.io'
-	blog: 'http://learn.meteorfactory.io'
+	about: 'http://orbit.mn'
+	blog: 'http://trive.news'
 
 	socialMedia:
 		facebook:
-			url: 'http://facebook.com/benjaminpeterjones'
+			url: 'http://facebook.com/TriveNews'
 			icon: 'facebook'
 		twitter:
-			url: 'http://twitter.com/BenPeterJones'
+			url: 'http://twitter.com/trive_news'
 			icon: 'twitter'
 		github:
-			url: 'http://github.com/yogiben'
+			url: 'http://github.com/mondrus/trive'
 			icon: 'github'
 		info:
-			url: 'http://meteorfactory.io'
+			url: 'http://trive.news'
 			icon: 'link'
 
 	#Routes
