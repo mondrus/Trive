@@ -477,7 +477,7 @@ Router.route('/notFound', function () {
 // Default route
 // You can use direct this.render('template')
 // We use Router.go method because dashboard1 is our nested view in menu
-Router.route('/', function () {
-    Router.go('dashboard1');
-});
+//Router.route('/', function () {
+//    Router.go('dashboard1');
+//});
 
