@@ -1,5 +1,8 @@
 Template.mainLayout.rendered = function(){
 
+
+
+alert("here")
     // Minimalize menu when screen is less than 768px
     $(window).bind("resize load", function () {
         if ($(this).width() < 769) {
@@ -34,7 +37,7 @@ Template.mainLayout.rendered = function(){
     // SKIN OPTIONS
     // Uncomment this if you want to have different skin option:
     // Available skin: (skin-1 or skin-3, skin-2 deprecated, md-skin)
-    $('body').addClass('md-skin-3');
+    $('body').addClass('skin-3');
 
     // FIXED-SIDEBAR
     // Uncomment this if you want to have fixed left navigation
