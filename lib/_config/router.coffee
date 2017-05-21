@@ -1,7 +1,7 @@
 @subs = new SubsManager()
 
 Router.configure
-  layoutTemplate: "masterLayout"
+  layoutTemplate: "mainLayout"
   loadingTemplate: "loading"
   notFoundTemplate: "notFound"
   routeControllerNameConverter: "camelCase"

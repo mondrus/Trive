@@ -1,9 +1,9 @@
 Router.map ->
-  @route "profile",
-    path: "/profile"
-      
-  @route "account",
-    path: "/account"
+  @route "profile_OLD",
+    path: "/profile_OLD"
+
+  @route "account_OLD",
+    path: "/account_OLD"
 
   @route "setUserName",
     path: "/setUserName"
