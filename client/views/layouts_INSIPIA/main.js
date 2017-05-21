@@ -2,7 +2,7 @@ Template.mainLayout.rendered = function(){
 
 
 
-alert("here")
+
     // Minimalize menu when screen is less than 768px
     $(window).bind("resize load", function () {
         if ($(this).width() < 769) {
