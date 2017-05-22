@@ -6,7 +6,7 @@ Template.home.rendered = () ->
 	# make sure div stays full width/height on resize
 	# global vars
 	winWidth = $(window).width()
-	winHeight = $(window).height()
+	winHeight = $(window).height()-100
 
 	# set initial div height / width
 	$("#intro").css
@@ -16,8 +16,9 @@ Template.home.rendered = () ->
 	$(window).resize ->
 	  $("#intro").css
 	    width: $(window).width()
-	    height: $(window).height()
+	    height: $(window).height()-100
 
+			
 	#Skroll doesn't work so well on mobile imo
 	unless Utils.isMobile
 		options =

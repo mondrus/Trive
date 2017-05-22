@@ -1,15 +1,15 @@
 {
 
 	/*Config*/
-	"configName": "My App",
-	"configTitle": "Make Meteor Apps. Fast.",
-	"configSubtitle": "Create beautiful and functioning Meteor apps really quick",
+	"configName": "Trive",
+	"configTitle": "Trive kills fake news",
+	"configSubtitle": " with crowdsourcing and cryptography",
 	
 	/*Home*/
 	"getstarted": "Get Started",
 	"dashboard": "Go to dashboard",
 	"learn": "Learn more",
-	"intro": "Make Meteor Apps. Fast.",
+	"intro": "Trive kills fake news with crowdsourcing and cryptocurrencies",
 	"how": "How It Works",
 	"step_1": "Step 1",
 	"step_1_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
