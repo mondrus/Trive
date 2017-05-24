@@ -1,4 +1,4 @@
-<template name="navigation">
+<template name="old_navigation">
   <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
       
@@ -32,6 +32,30 @@
             <i class="fa fa-th-large"></i> 
             <span class="nav-label">Dashboard</span>
           </a>
+        </li>
+        <li class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projects|projectDetail|teamsBoard|clients|fullHeight|fileManager|calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed'}}">
+          <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+          <ul class="nav nav-second-level collapse {{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projects|projectDetail|teamsBoard|clients|fullHeight|fileManager|Calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed' className='in'}}">
+            <li class="{{isActiveRoute regex='contacts'}}"><a href="{{pathFor route='contacts'}}">Contacts</a></li>
+            <li class="{{isActiveRoute regex='profile'}}"><a href="{{pathFor route='profile'}}">Profile</a></li>
+            <li class="{{isActiveRoute regex='profile2'}}"><a href="{{pathFor route='profile2'}}">Profile 2</a></li>
+            <li class="{{isActiveRoute regex='contacts2'}}"><a href="{{pathFor route='contacts2'}}">Contact 2</a></li>
+            <li class="{{isActiveRoute regex='projects'}}"><a href="{{pathFor route='projects'}}">Projects</a></li>
+            <li class="{{isActiveRoute regex='projectDetail'}}"><a href="{{pathFor route='projectDetail'}}">Project detail</a></li>
+            <li class="{{isActiveRoute regex='teamsBoard'}}"><a href="{{pathFor route='teamsBoard'}}">Teams board</a></li>
+            <li class="{{isActiveRoute regex='socialFeed'}}"><a href="{{pathFor route='socialFeed'}}">Social feed</a></li>
+            <li class="{{isActiveRoute regex='clients'}}"><a href="{{pathFor route='clients'}}">Clients</a></li>
+            <li class="{{isActiveRoute regex='fullHeight'}}"><a href="{{pathFor route='fullHeight'}}">Outlook view</a></li>
+            <li class="{{isActiveRoute regex='voteList'}}"><a href="{{pathFor route='voteList'}}">Vote list</a></li>
+            <li class="{{isActiveRoute regex='fileManager'}}"><a href="{{pathFor route='fileManager'}}">File manager</a></li>
+            <li class="{{isActiveRoute regex='calendar'}}"><a href="{{pathFor route='calendar'}}">Calendar</a></li>
+            <li class="{{isActiveRoute regex='issueTracker'}}"><a href="{{pathFor route='issueTracker'}}">Issue tracker</a></li>
+            <li class="{{isActiveRoute regex='blog'}}"><a href="{{pathFor route='blog'}}">Blog</a></li>
+            <li class="{{isActiveRoute regex='article'}}"><a href="{{pathFor route='article'}}">Article</a></li>
+            <li class="{{isActiveRoute regex='faq'}}"><a href="{{pathFor route='faq'}}">FAQ</a></li>
+            <li class="{{isActiveRoute regex='timelineOne'}}"><a href="{{pathFor route='timelineOne'}}">Timeline</a></li>
+            <li class="{{isActiveRoute regex='pinBoard'}}"><a href="{{pathFor route='pinBoard'}}">Pin board</a></li>
+          </ul>
         </li>
         <li class="{{isActiveRoute regex='fullHeight'}}">
           <a href="{{pathFor route='fullHeight'}}">

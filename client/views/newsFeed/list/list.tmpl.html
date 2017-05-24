@@ -1,0 +1,24 @@
+<template name="newsFeedList">
+  <div class="newsFeedList">
+    <div class="full-height-scroll">
+      {{#each articles}}
+      <div class="media newsFeedItem">
+        <a class="pull-left image" href="#">
+          <img class = "media-object" src="{{image}}" alt = "Media Object">
+        </a>
+        
+        <div class="media-body">
+          <h4 class="media-heading">{{title}}</h4>
+          <h6>{{pubDate}}</h6>
+          {{#if description}}
+          {{description}}
+          {{else}}
+          {{title}}
+          {{/if}}
+        </div>
+        
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</template>

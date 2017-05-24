@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/mondrus/trive/issues"
   },
-  "homepage": "https://github.com/mondrus/trive#readme"
+  "homepage": "https://github.com/mondrus/trive#readme",
+  "dependencies": {
+    "meteor-node-stubs": "^0.2.6"
+  },
+  "devDependencies": {
+    "babel-runtime": "^6.23.0"
+  }
 }

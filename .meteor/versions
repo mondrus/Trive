@@ -16,6 +16,7 @@ aldeed:simple-schema@1.5.3
 aldeed:tabular@1.6.1
 aldeed:template-extension@4.1.0
 allow-deny@1.0.5
+anonyfox:scrape@0.0.10
 autoupdate@1.2.11
 babel-compiler@6.8.5
 babel-runtime@0.1.9_1
@@ -60,6 +61,7 @@ ddp-rate-limiter@1.0.5
 ddp-server@1.2.10
 deps@1.0.12
 diff-sequence@1.0.6
+digilord:sugarjs@1.4.1
 ecmascript@0.4.8
 ecmascript-runtime@0.2.12
 ejson@1.0.12
@@ -69,6 +71,7 @@ fastclick@1.0.12
 favorites@0.0.4
 force-ssl@1.0.12
 fortawesome:fontawesome@4.7.0
+froatsnook:request@2.53.3
 geojson-utils@1.0.9
 google@1.1.13
 handlebars@1.0.7
@@ -101,8 +104,10 @@ matb33:collection-hooks@0.8.4
 mdg:validation-error@0.5.1
 meteor@1.1.16
 meteor-base@1.0.4
+meteorhacks:async@1.0.0
 meteorhacks:inject-initial@1.0.4
 meteorhacks:meteorx@1.4.1
+meteorhacks:npm@1.5.0
 meteorhacks:subs-manager@1.6.4
 meteorhacks:unblock@1.1.0
 meteorspark:util@0.2.0
@@ -123,7 +128,9 @@ mpowaga:jquery-ui-widget@1.11.4
 mpowaga:string-template@0.1.0
 multiply:iron-router-progress@1.0.2
 natestrauser:animate-css@3.5.1
+nefiltari:yaki@0.1.81
 npm-bcrypt@0.8.6_3
+npm-container@1.2.0
 npm-mongo@1.4.45
 oauth@1.1.11
 oauth1@1.1.10
@@ -172,6 +179,7 @@ useraccounts:iron-routing@1.14.2
 utilities:avatar@0.9.2
 webapp@1.2.11
 webapp-hashing@1.0.9
+wizonesolutions:underscore-string@1.0.0
 yogiben:admin@1.2.8
 yogiben:autoform-file@0.4.2
 yogiben:autoform-map@0.2.0
