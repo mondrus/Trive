@@ -3,14 +3,15 @@
  * @Date:   2017-05-27T21:54:22+00:00
  * @Filename: NewsRoomView.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-29T15:43:31+00:00
+ * @Last modified time: 2017-05-29T16:14:33+00:00
  */
 
 
 
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import ArticleList from '../../components/ArticleList';
+import { Link } from 'react-router-dom';
+import NewsFeedDetail from '../../components/NewsFeedDetail';
 import moment from 'moment';
 
 const NothingHere = () => (
@@ -25,11 +26,21 @@ class NewsRoomView extends Component {
   constructor(props) {
     super(props);
     
-    props.setTitle(this.props.tag);
+    this.state = {};
+    this.renderFeed = this.renderFeed.bind(this);
+  }
+  
+  componentWillMount() {
+    this.props.setTitle(this.props.tag);
+  }
+  
+  renderFeed(feed) {
+    this.setState({ feed });
   }
   
   render() {
     const { tag, articles } = this.props;
+    const { feed } = this.state;
 
     return (
       <Row className="fh-breadcrumb">
@@ -37,28 +48,32 @@ class NewsRoomView extends Component {
           <ul className="list-group elements-list">
             {articles.map((article, index) => (
               <li key={index} className="list-group-item">
-                <a data-toggle="tab" href="#tab-1">
+                <Link to="#" onClick={() => this.renderFeed(article)}>
                   <small className="pull-right text-muted"> {formatDate(article.pubDate)}</small>
                   <strong>{tag}</strong>
                   <div className="small m-t-xs">
                     <p>{article.title}</p>
                   </div>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </Col>
 
         <Col md={9} style={{ padding: 0 }} className="full-height">
-          <div className="wrapper wrapper-content">
-            <div className="middle-box text-center animated fadeInRightBig">
-              <i className="fa fa-rss" style={{ fontSize: 100 }}/>
-              <h3 className="font-bold">Story / Article detail</h3>
-              <div className="error-desc">
-                Select a feed from the right to display the content
+          { feed ?
+            <NewsFeedDetail feed={feed} />
+          :
+            <div className="wrapper wrapper-content">
+              <div className="middle-box text-center animated fadeInRightBig">
+                <i className="fa fa-rss" style={{ fontSize: 100 }}/>
+                <h3 className="font-bold">Story / Article detail</h3>
+                <div className="error-desc">
+                  Select a feed from the right to display the content
+                </div>
               </div>
             </div>
-          </div>
+          }
         </Col>
       </Row>
     );

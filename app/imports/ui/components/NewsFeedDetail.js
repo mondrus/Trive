@@ -3,7 +3,7 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-28T07:51:36+00:00
+ * @Last modified time: 2017-05-29T16:09:09+00:00
 */
 
 
@@ -30,7 +30,9 @@ class NewsFeedDetail extends Component {
   }
   
   render() {
-    const { feed } = this.props;
+    let { feed } = this.props;
+    
+    feed = feed ? feed : dummyFeed;
 
     return (
       <div className="wrapper wrapper-content animated fadeInRight">
