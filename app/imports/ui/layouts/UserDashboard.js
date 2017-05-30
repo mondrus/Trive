@@ -3,44 +3,14 @@
  * @Date:   2017-05-27T20:25:38+00:00
  * @Filename: UserDashboard.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-29T12:49:05+00:00
+ * @Last modified time: 2017-05-30T07:24:59+00:00
  */
 
 
 
 import React, { Component } from 'react';
+import TopNav from '../components/TopNav';
 
-const TopNav = () => (
-  <div className="row border-bottom">
-    <nav className="navbar navbar-static-top" role="navigation" style={{ marginBottom: 0}}>
-      <div className="navbar-header">
-        <a id="navbar-minimalize" className="minimalize-styl-2 btn btn-primary " href="#"><i className="fa fa-bars"></i> </a>
-      <form role="search" className="navbar-form-custom" action="search_results">
-          <div className="form-group">
-            <input type="text" placeholder="Search for something..." className="form-control" name="top-search" id="top-search" />
-          </div>
-        </form>
-      </div>
-      <ul className="nav navbar-top-links navbar-right">
-        <li className="dropdown">
-          <a className="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <i className="fa fa-envelope"></i>
-          </a>
-        </li>
-        <li className="dropdown">
-          <a className="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <i className="fa fa-bell"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" id="btnLogout">
-            <i className="fa fa-sign-out"></i> Log out
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-);
 
 const PageHeading = ({ category, title }) => (
   <div className="row wrapper border-bottom white-bg page-heading">
