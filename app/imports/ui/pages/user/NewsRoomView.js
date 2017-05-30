@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T21:54:22+00:00
  * @Filename: NewsRoomView.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-29T16:14:33+00:00
+ * @Last modified time: 2017-05-30T08:15:04+00:00
  */
 
 
@@ -11,7 +11,7 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import NewsFeedDetail from '../../components/NewsFeedDetail';
+import NewsFeedDetail from '../../containers/NewsFeedDetail';
 import moment from 'moment';
 
 const NothingHere = () => (

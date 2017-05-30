@@ -3,16 +3,17 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-29T16:09:09+00:00
+ * @Last modified time: 2017-05-30T07:52:27+00:00
 */
 
 
-
+/* window */
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Annotator from 'annotator';
 import Annotations from '/lib/collections/annotations';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
+import annotatorMarginalia from '../../modules/annotator.maginalia';
 
 const dummyFeed = {
   customProp: "customProp!",
@@ -93,6 +94,10 @@ class NewsFeedDetail extends Component {
       annotations: ann ? ann.annotations : []
     });
     app.include(UserUtil);
+    app.include(annotatorMarginalia, {
+      show_update_date: true,
+      show_author: true
+    });
     app.start()
     .then(() => {
       app.annotations.load();
