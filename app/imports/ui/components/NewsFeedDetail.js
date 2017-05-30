@@ -3,7 +3,7 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T10:29:29+00:00
+ * @Last modified time: 2017-05-30T12:47:28+00:00
 */
 
 
@@ -70,10 +70,10 @@ class NewsFeedDetail extends Component {
     feed = feed ? feed : dummyFeed;
 
     return (
-      <div className="wrapper wrapper-content animated fadeInRight">
+      <div className="wrapper wrapper-content animated fadeInRight" style={{ paddingTop: 10 }}>
         <Row>
           <Col md={12}>
-            <Panel>
+            <Panel style={{ marginBottom: 10 }}>
               <b>{feed.title}</b>
               <ButtonToolbar className="pull-right">
                 <Button

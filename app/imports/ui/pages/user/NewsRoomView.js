@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T21:54:22+00:00
  * @Filename: NewsRoomView.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T10:26:37+00:00
+ * @Last modified time: 2017-05-30T12:45:44+00:00
  */
 
 
@@ -54,7 +54,7 @@ class NewsRoomView extends Component {
           </ul>
         </Col>
 
-        <Col md={9} className="full-height">
+        <Col md={9} className="full-height" style={{ padding: 0 }}>
           { feed ?
             <NewsFeedDetail feed={feed} />
           :
