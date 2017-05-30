@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T21:54:22+00:00
  * @Filename: NewsRoomView.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T08:15:04+00:00
+ * @Last modified time: 2017-05-30T10:16:13+00:00
  */
 
 
@@ -13,14 +13,8 @@ import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import NewsFeedDetail from '../../containers/NewsFeedDetail';
 import moment from 'moment';
+import formatDate from '../../../modules/formatDate';
 
-const NothingHere = () => (
-  <div>Nothing here for now</div>
-);
-
-const formatDate = (date, format="DD.MM.YYYY") => (
-  moment(date).format(format)
-);
 
 class NewsRoomView extends Component {
   constructor(props) {

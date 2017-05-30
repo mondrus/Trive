@@ -3,7 +3,7 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T09:12:57+00:00
+ * @Last modified time: 2017-05-30T10:11:07+00:00
 */
 
 
@@ -14,6 +14,8 @@ import Annotator from 'annotator';
 import Annotations from '/lib/collections/annotations';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
 import annotatorMarginalia from '../../modules/annotator.maginalia';
+import AnnotationsList from './AnnotationsList';
+
 
 const dummyFeed = {
   customProp: "customProp!",
@@ -28,29 +30,42 @@ const dummyFeed = {
 class NewsFeedDetail extends Component {
   constructor(props) {
     super(props);
-    
+
+    this.state = {
+      showAnnotations: false,
+      annotations: []
+    };
+
     this.app = new Annotator.App();
     this.app.include(UserUtil);
+    this.showAnnotations = this.showAnnotations.bind(this);
   }
-  
+
+  showAnnotations() {
+    this.setState({ showAnnotations: !this.state.showAnnotations });
+  }
+
   componentWillReceiveProps(nextProps) {
     const { feed, annotationsLoading, annotations } = nextProps;
 
     if (!annotationsLoading) {
       const ann = Annotations.findOne();
+      const annotations = ann ? ann.annotations : [];
       
-      console.log('nosns', ann ? ann.annotations : []);
+      this.setState({ annotations });
+
       this.app.include(AnnotationStorage, {
         story: feed,
-        annotations: ann ? ann.annotations : []
+        annotations
       });
 
-      this.app.annotations.load(ann ? ann.annotations : []);
+      this.app.annotations.load(annotations);
     }
   }
   
   render() {
     let { feed, annotationsLoading } = this.props;
+    const { showAnnotations, annotations } = this.state;
     
     feed = feed ? feed : dummyFeed;
 
@@ -61,9 +76,14 @@ class NewsFeedDetail extends Component {
             <Panel>
               <b>{feed.title}</b>
               <ButtonToolbar className="pull-right">
-                <Button bsSize="xsmall" bsStyle="primary" disabled={annotationsLoading}>
+                <Button
+                  bsSize="xsmall"
+                  bsStyle="primary"
+                  disabled={annotationsLoading}
+                  onClick={this.showAnnotations}
+                >
                   { !annotationsLoading ?
-                    'Show Annotations'
+                    `${showAnnotations ? 'Hide' : 'Show'} Annotations (${annotations.length})`
                   : 
                     <span>
                       Loading  <span className="loading dots" />
@@ -78,8 +98,8 @@ class NewsFeedDetail extends Component {
           <div className="col-lg-12">
             <div className="ibox product-detail">
               <div className="ibox-content">
-                <div className="row">
-                  <div className="col-md-5">
+                <Row>
+                  <Col md={3}>
                     <div className="image-imitation" style={{ padding: 0 }}>
                       <img src={feed.image} style={{ height: '100%', width: '100%' }}/>
                     </div>
@@ -88,8 +108,8 @@ class NewsFeedDetail extends Component {
                         <i className="fa fa-star"></i> Add to Favourite 
                       </button>
                     </div>
-                  </div>
-                  <div className="col-md-7" id="currentFeed">
+                  </Col>
+                  <Col md={!showAnnotations ? 9 : 6} id="currentFeed">
                     <h2 className="font-bold m-b-xs">
                       {feed.title}
                     </h2>
@@ -99,9 +119,12 @@ class NewsFeedDetail extends Component {
                       {feed.description}
                     </div>
                     <hr />
-                  </div>
-                </div>
-                
+                  </Col>
+                  {showAnnotations &&
+                  <Col md={3} >
+                    <AnnotationsList annotations={annotations}/>
+                  </Col>}
+                </Row>
               </div>
               <div className="ibox-footer">
                 <span className="pull-right">

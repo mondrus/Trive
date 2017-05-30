@@ -3,10 +3,11 @@
  * @Date:   2017-05-30T07:51:29+00:00
  * @Filename: annotator.maginalia.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T07:53:05+00:00
+ * @Last modified time: 2017-05-30T08:18:53+00:00
  */
 
 import annotator from 'annotator';
+import moment from 'moment';
 
 function annotatorMarginalia(user_options) {
   
