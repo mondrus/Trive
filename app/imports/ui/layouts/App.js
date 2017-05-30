@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T16:34:46+00:00
  * @Filename: App.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T08:35:14+00:00
+ * @Last modified time: 2017-05-30T10:30:49+00:00
  */
 
 
@@ -30,7 +30,7 @@ const App = appProps => (
     <div className="Trive">
       <Switch>
         <Public exact name="index" path="/" component={Login} {...appProps} />
-        {/* <Route exact name="index" path="/" component={Index} /> */}
+        <Route exact name="index" path="/test" component={Index} />
         <Authenticated exact path="/dashboard" component={Dashboard} {...appProps} />
         <Authenticated exact path="/dashboard/favourites" component={Favourites} {...appProps} />
         <Authenticated exact path="/dashboard/annotations" component={Annotations} {...appProps} />

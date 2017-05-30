@@ -3,7 +3,7 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T10:11:07+00:00
+ * @Last modified time: 2017-05-30T10:29:29+00:00
 */
 
 
@@ -154,10 +154,7 @@ class NewsFeedDetail extends Component {
       story: feed,
       annotations: ann ? ann.annotations : []
     });
-    
-    // this.app.include(annotatorMarginalia, {
-    //   show_author: true
-    // });
+
     this.app.start()
     .then(() => {
       this.app.annotations.load();
