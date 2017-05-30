@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T16:34:46+00:00
  * @Filename: App.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-29T14:21:42+00:00
+ * @Last modified time: 2017-05-30T08:35:14+00:00
  */
 
 
@@ -20,7 +20,7 @@ import Authenticated, {
   Annotations
 } from '../pages/user';
 import NewsRoomView from '../containers/NewsRoomView';
-
+import 'text-spinners/spinners.css';
 // import RecoverPassword from '../pages/RecoverPassword';
 // import ResetPassword from '../pages/ResetPassword';
 // import NotFound from '../pages/NotFound';
