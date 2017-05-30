@@ -3,33 +3,16 @@
  * @Date:   2017-05-27T20:25:38+00:00
  * @Filename: UserDashboard.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T07:24:59+00:00
+ * @Last modified time: 2017-05-30T07:27:01+00:00
  */
 
 
 
 import React, { Component } from 'react';
 import TopNav from '../components/TopNav';
-
-
-const PageHeading = ({ category, title }) => (
-  <div className="row wrapper border-bottom white-bg page-heading">
-      <div className="col-lg-12">
-          <h2>{title}</h2>
-          <ol className="breadcrumb">
-              <li>
-                  <a href="/dashboard">Home</a>
-              </li>
-              {category && <li><a>{category}</a></li>}
-              <li className="active">
-                  <strong>{title}</strong>
-              </li>
-          </ol>
-      </div>
-  </div>
-);
-
+import PageHeading from '../components/PageHeading';
 import Navigation from '../components/Navigation';
+
 
 class UserDashboard extends Component {
   constructor() {
