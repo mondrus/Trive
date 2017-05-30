@@ -3,7 +3,7 @@
  * @Date:   2017-05-28T07:22:57+00:00
  * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T08:16:06+00:00
+ * @Last modified time: 2017-05-30T08:45:05+00:00
  */
 
 
@@ -21,11 +21,13 @@ const composer = ({ feed, ...props }, onData) => {
 
     onData(null, {
       annotations: ann ? ann.annotations : [], 
+      annotationsLoading: false,
       feed,
       ...props
     });
+    return;
   }
-  // onData(null, {});
+  onData(null, { feed, ...props, annotationsLoading: true });
 };
 
 export default composeWithTracker(composer, Loading)(NewsFeedDetail);

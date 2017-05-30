@@ -3,13 +3,13 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T07:52:27+00:00
+ * @Last modified time: 2017-05-30T09:12:57+00:00
 */
 
 
 /* window */
 import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Button, ButtonToolbar, Col, Panel, Row } from 'react-bootstrap';
 import Annotator from 'annotator';
 import Annotations from '/lib/collections/annotations';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
@@ -28,15 +28,52 @@ const dummyFeed = {
 class NewsFeedDetail extends Component {
   constructor(props) {
     super(props);
+    
+    this.app = new Annotator.App();
+    this.app.include(UserUtil);
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    const { feed, annotationsLoading, annotations } = nextProps;
+
+    if (!annotationsLoading) {
+      const ann = Annotations.findOne();
+      
+      console.log('nosns', ann ? ann.annotations : []);
+      this.app.include(AnnotationStorage, {
+        story: feed,
+        annotations: ann ? ann.annotations : []
+      });
+
+      this.app.annotations.load(ann ? ann.annotations : []);
+    }
   }
   
   render() {
-    let { feed } = this.props;
+    let { feed, annotationsLoading } = this.props;
     
     feed = feed ? feed : dummyFeed;
 
     return (
       <div className="wrapper wrapper-content animated fadeInRight">
+        <Row>
+          <Col md={12}>
+            <Panel>
+              <b>{feed.title}</b>
+              <ButtonToolbar className="pull-right">
+                <Button bsSize="xsmall" bsStyle="primary" disabled={annotationsLoading}>
+                  { !annotationsLoading ?
+                    'Show Annotations'
+                  : 
+                    <span>
+                      Loading  <span className="loading dots" />
+                    </span>
+                  }
+                </Button>
+              </ButtonToolbar>
+            </Panel>
+          </Col>
+        </Row>
         <div className="row">
           <div className="col-lg-12">
             <div className="ibox product-detail">
@@ -82,25 +119,25 @@ class NewsFeedDetail extends Component {
   
   componentDidMount() {
     const { feed } = this.props;
-    const app = new Annotator.App();
     const ann = Annotations.findOne();
     
-    app.include(Annotator.ui.main, {
+    console.log('componentDidMount');
+    
+    this.app.include(Annotator.ui.main, {
       element: document.getElementById('currentFeed')
     });
 
-    app.include(AnnotationStorage, {
+    this.app.include(AnnotationStorage, {
       story: feed,
       annotations: ann ? ann.annotations : []
     });
-    app.include(UserUtil);
-    app.include(annotatorMarginalia, {
-      show_update_date: true,
-      show_author: true
-    });
-    app.start()
+    
+    // this.app.include(annotatorMarginalia, {
+    //   show_author: true
+    // });
+    this.app.start()
     .then(() => {
-      app.annotations.load();
+      this.app.annotations.load();
     });
   }
 }
