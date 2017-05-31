@@ -3,7 +3,7 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-31T09:38:54+00:00
+ * @Last modified time: 2017-05-31T09:52:13+00:00
 */
 
 
@@ -13,6 +13,7 @@ import React, { Component } from 'react';
 import { Button, ButtonToolbar, Col, Panel, Row } from 'react-bootstrap';
 import Annotator from 'annotator';
 import Annotations from '/lib/collections/annotations';
+import Stories from '/lib/collections/stories';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
 import annotatorMarginalia from '../../modules/annotator.maginalia';
 import AnnotationsList from './AnnotationsList';
@@ -76,10 +77,11 @@ class NewsFeedDetail extends Component {
   }
   
   render() {
-    let { feed, annotationsLoading } = this.props;
+    let { feed, story: { likes }, annotationsLoading } = this.props;
     const { showAnnotations, annotations } = this.state;
     
     feed = feed ? feed : dummyFeed;
+    const liked = likes ? likes.find(id => id === Meteor.userId()) : false;
 
     return (
       <div className="wrapper wrapper-content animated fadeInRight" style={{ paddingTop: 10 }}>
@@ -94,7 +96,7 @@ class NewsFeedDetail extends Component {
                   onClick={this.likeStory}
                   disabled={annotationsLoading}
                 >
-                  <i className="fa fa-heart" />
+                  <i className={`fa fa-heart${liked ? ' text-danger' : ''}`} />
                 </Button>
                 <Button
                   bsSize="xsmall"

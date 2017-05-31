@@ -3,7 +3,7 @@
  * @Date:   2017-05-31T08:52:16+00:00
  * @Filename: stories.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-31T09:37:20+00:00
+ * @Last modified time: 2017-05-31T09:55:07+00:00
  */
 
 
@@ -15,7 +15,9 @@ const likeStory = async (_id, likes) => {
   const id = Stories.findOne({ _id, likes });
   
   if (!id) {
-    await Stories.update(storyId, { $push: { likes } });
+    await Stories.update(_id, { $push: { likes } });
+  } else {
+    await Stories.update(_id, { $pull: { likes } });
   }
 };
 
