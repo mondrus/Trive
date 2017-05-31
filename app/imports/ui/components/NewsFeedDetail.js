@@ -3,11 +3,12 @@
 * @Date:   2017-05-27T23:46:28+00:00
 * @Filename: NewsFeedDetail.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T12:47:28+00:00
+ * @Last modified time: 2017-05-31T09:38:54+00:00
 */
 
 
 /* window */
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Button, ButtonToolbar, Col, Panel, Row } from 'react-bootstrap';
 import Annotator from 'annotator';
@@ -39,10 +40,21 @@ class NewsFeedDetail extends Component {
     this.app = new Annotator.App();
     this.app.include(UserUtil);
     this.showAnnotations = this.showAnnotations.bind(this);
+    this.likeStory = this.likeStory.bind(this);
   }
 
   showAnnotations() {
     this.setState({ showAnnotations: !this.state.showAnnotations });
+  }
+  
+  likeStory() {
+    let { feed } = this.props;
+
+    feed = feed ? feed : dummyFeed;
+
+    Meteor.call('likeStory', feed, (err) => {
+      if(err) { console.log(err); }
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -76,6 +88,14 @@ class NewsFeedDetail extends Component {
             <Panel style={{ marginBottom: 10 }}>
               <b>{feed.title}</b>
               <ButtonToolbar className="pull-right">
+                <Button
+                  bsSize="xsmall"
+                  bsStyle="link"
+                  onClick={this.likeStory}
+                  disabled={annotationsLoading}
+                >
+                  <i className="fa fa-heart" />
+                </Button>
                 <Button
                   bsSize="xsmall"
                   bsStyle="primary"
