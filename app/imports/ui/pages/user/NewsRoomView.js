@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T21:54:22+00:00
  * @Filename: NewsRoomView.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T12:45:44+00:00
+ * @Last modified time: 2017-05-31T10:24:13+00:00
  */
 
 
@@ -44,7 +44,7 @@ class NewsRoomView extends Component {
               <li key={index} className="list-group-item">
                 <Link to="#" onClick={() => this.renderFeed(article)}>
                   <small className="pull-right text-muted"> {formatDate(article.pubDate)}</small>
-                  <strong>{tag}</strong>
+                  <span>Source: <strong>{tag}</strong></span>
                   <div className="small m-t-xs">
                     <p>{article.title}</p>
                   </div>

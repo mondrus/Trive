@@ -3,7 +3,7 @@
  * @Date:   2017-05-27T16:34:46+00:00
  * @Filename: App.js
  * @Last modified by:   philip
- * @Last modified time: 2017-05-30T10:30:49+00:00
+ * @Last modified time: 2017-05-31T10:07:28+00:00
  */
 
 
@@ -16,10 +16,10 @@ import Index from '../pages/Index';
 import Public, { Signup, Login } from '../pages/auth';
 import Authenticated, {
   Dashboard,
-  Favourites,
   Annotations
 } from '../pages/user';
 import NewsRoomView from '../containers/NewsRoomView';
+import Favourites from '../containers/Favourites';
 import 'text-spinners/spinners.css';
 // import RecoverPassword from '../pages/RecoverPassword';
 // import ResetPassword from '../pages/ResetPassword';
