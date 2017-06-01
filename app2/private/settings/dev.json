@@ -1,0 +1,24 @@
+{
+    "environment": "dev",
+
+    "public": {
+        "ga": {
+            "id": "UA-97914674-2"
+        },
+        "mixpanel": {
+            "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "identifyUsers": true
+        }
+    },
+    "serviceConfigurations": {
+        "facebook": {
+            "appId": "237186756761005",
+            "secret": "ae85ea10503073c32dbbafffe24a2b32"
+        },
+        "google": {
+          "clientId" : "670091367171-cddi0eedv540ahlh6bao7t1apdf5i67q.apps.googleusercontent.com",
+          "secret" : "yOXhykecfqutMXUsvn7AfYf_",
+          "loginStyle" : "popup"
+        }
+    }
+}
