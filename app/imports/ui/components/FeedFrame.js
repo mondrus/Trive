@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import renderHTML from 'react-render-html';
 import Annotator from 'annotator';
+import { Link } from 'react-router-dom';
+import { stringify } from 'query-string';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
+
+
+const QueryLink = (props) => (
+  <Link {...props} to={{ ...props.to, search: stringify(props.to.query) }}/>
+);
 
 class FeedFrame extends Component {
   constructor(props) {
@@ -30,61 +37,64 @@ class FeedFrame extends Component {
     }
 
     return (
-      <iframe
-        id="iframeContainer"
-        frameBorder="0"
-        allowFullScreen
-        style={{
-          minHeight: 1200,
-          width: '100%'
-        }}
-      />
+      <div>
+        <QueryLink
+          to={{
+            pathname: '/view-story',
+            query: { link: url }
+          }}
+          target="blank"
+        >
+          View Story
+        </QueryLink>
+      </div>
     )
   }
   
   componentDidMount() {
     // console.log(this.props);
-    const { html, loading } = this.props;
-    
-    if (!loading) {
-      const iframe = document.getElementById('iframeContainer');
-      iframedoc = iframe.contentDocument || iframe.contentWindow.document;
-      
-      iframedoc.body.innerHTML = html;
-    }
+    // const { html, loading } = this.props;
+    // 
+    // if (!loading) {
+    //   const iframe = document.getElementById('iframeContainer');
+    //   iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+    //   
+    //   iframedoc.body.innerHTML = html;
+    // }
   }
   
   componentDidUpdate() {
     const { loading, error, html } = this.props;
     
     if (!loading && !error) {
-      const iframe = document.getElementById('iframeContainer');
+      const iframe = $('#iframeContainer');
       console.log(iframe);
       
-      var style = document.createElement('style');
-      style.textContent =
-      `body {
-        background-color: #fefefe !important;
-        color: #262626 !important;
-      }` 
-      ;
-      iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+      // var style = document.createElement('style');
+      // style.textContent =
+      // `body {
+      //   background-color: #fefefe !important;
+      //   color: #262626 !important;
+      // }` 
+      // ;
+      // iframedoc = iframe.contentDocument || iframe.contentWindow.document;
       
-      iframedoc.body.innerHTML = html;
-      iframe.contentDocument.head.appendChild(style);
+      // iframe.load('http://edition.cnn.com/2017/06/05/middleeast/saudi-bahrain-egypt-uae-qatar-terror/index.html')
+      // iframedoc.body.innerHTML = html;
+      // iframe.contentDocument.head.appendChild(style);
     
       /** annotations **/
       
       // console.log(iframedoc.body);
-      this.app.include(Annotator.ui.main, {
-        element: iframedoc.body
-      });
-      
-      this.app.start()
-      .then(() => {
-        console.log('hoel');
-        // this.app.annotations.load();
-      });
+      // this.app.include(Annotator.ui.main, {
+      //   element: iframedoc.body
+      // });
+      // 
+      // this.app.start()
+      // .then(() => {
+      //   console.log('hoel');
+      //   // this.app.annotations.load();
+      // });
     }
   }
 }

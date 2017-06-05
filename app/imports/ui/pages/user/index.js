@@ -14,6 +14,7 @@ import NewsRoomView from './NewsRoomView';
 import UserDashboard from '../../layouts/UserDashboard';
 import Favourites from './Favourites';
 import Annotations from './Annotations';
+import ViewStory from './ViewStory';
 
 export default ({ loggingIn, authenticated, component, ...rest }) => (
   <Route {...rest} render={(props) => {
@@ -28,5 +29,6 @@ export {
   Dashboard,
   NewsRoomView,
   Favourites,
-  Annotations
-}
+  Annotations,
+  ViewStory
+};

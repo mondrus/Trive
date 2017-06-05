@@ -19,6 +19,7 @@ import Authenticated, {
   Favourites,
   Annotations
 } from '../pages/user';
+import ViewStory from '../containers/ViewStory';
 import NewsRoomView from '../containers/NewsRoomView';
 import 'text-spinners/spinners.css';
 // import RecoverPassword from '../pages/RecoverPassword';
@@ -35,6 +36,7 @@ const App = appProps => (
         <Authenticated exact path="/dashboard/favourites" component={Favourites} {...appProps} />
         <Authenticated exact path="/dashboard/annotations" component={Annotations} {...appProps} />
         <Authenticated exact path="/dashboard/:tag/:rss_id?" component={NewsRoomView} {...appProps} />
+        <Route exact path="/view-story" component={ViewStory} {...appProps} />
         {/* <Authenticated exact path="/documents/new" component={NewDocument} {...appProps} />
         <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...appProps} /> */}
         <Public path="/signup" component={Signup} {...appProps} />
