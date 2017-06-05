@@ -15,7 +15,7 @@ import Annotations from '/lib/collections/annotations';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
 import annotatorMarginalia from '../../modules/annotator.maginalia';
 import AnnotationsList from './AnnotationsList';
-
+import FeedFrame from '../containers/FeedFrame';
 
 const dummyFeed = {
   customProp: "customProp!",
@@ -96,44 +96,21 @@ class NewsFeedDetail extends Component {
         </Row>
         <div className="row">
           <div className="col-lg-12">
-            <div className="ibox product-detail">
-              <div className="ibox-content">
-                <Row>
-                  <Col md={3}>
-                    <div className="image-imitation" style={{ padding: 0 }}>
-                      <img src={feed.image} style={{ height: '100%', width: '100%' }}/>
-                    </div>
-                    <div className="btn-group">
-                      <button className="btn btn-white btn-sm">
-                        <i className="fa fa-star"></i> Add to Favourite 
-                      </button>
-                    </div>
-                  </Col>
-                  <Col md={!showAnnotations ? 9 : 6} id="currentFeed">
-                    <h2 className="font-bold m-b-xs">
-                      {feed.title}
-                    </h2>
-                    <small>{`${feed.pubDate}`}</small>
-                    <hr />                    
-                    <div className="small text-muted">
-                      {feed.description}
-                    </div>
-                    <hr />
-                  </Col>
-                  {showAnnotations &&
-                  <Col md={3} >
-                    <AnnotationsList annotations={annotations}/>
-                  </Col>}
-                </Row>
-              </div>
-              <div className="ibox-footer">
-                <span className="pull-right">
-                  <i className="fa fa-clock-o"></i> {`${feed.pubDate}`}
-                </span>
-                <div className="clearfix" />
-              </div>
+            <Row>
+              <Col md={!showAnnotations ? 12 : 9} id="currentFeed">
+                <FeedFrame url={feed.link}/>
+              </Col>
+              {showAnnotations &&
+              <Col md={3} >
+                <AnnotationsList annotations={annotations}/>
+              </Col>}
+            </Row>
+            <div className="ibox-footer">
+              <span className="pull-right">
+                <i className="fa fa-clock-o"></i> {`${feed.pubDate}`}
+              </span>
+              <div className="clearfix" />
             </div>
-            
           </div>
         </div>
       </div>
@@ -143,8 +120,6 @@ class NewsFeedDetail extends Component {
   componentDidMount() {
     const { feed } = this.props;
     const ann = Annotations.findOne();
-    
-    console.log('componentDidMount');
     
     this.app.include(Annotator.ui.main, {
       element: document.getElementById('currentFeed')
