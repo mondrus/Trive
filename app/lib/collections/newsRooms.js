@@ -10,19 +10,9 @@
 import { Meteor } from 'meteor/meteor';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-const RssSchema = new SimpleSchema({
-  _id: { type: String },
-  title: { type: String },
-  url: { type: String }
-});
-
 const NewsRoomsSchema = new SimpleSchema({
-  name: { type: String },
-  tag: { type: String },
-  description: { type: String, optional: true },
-  image: { type: String },
-  link: { type: String, optional: true },
-  rss: { type: [RssSchema] }
+  web_uri: { type: String },
+  title: { type: String },
 });
 
 

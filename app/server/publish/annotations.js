@@ -10,11 +10,8 @@
 import Annotations from '/lib/collections/annotations';
 import NewsStories from '/lib/collections/stories';
 
-Meteor.publish('annotations', function(story) {
-  const selector = {
-    link: story.link,
-    guid: story.guid
-  };
+Meteor.publish('annotations', function({ web_uri }) {
+  const selector = { web_uri };
   const newsStory = NewsStories.findOne(selector, { fields: { _id: 1 } });
   
   if (newsStory) {

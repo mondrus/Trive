@@ -11,20 +11,15 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import Annotation from './Annotation';
 
-const AnnotationSchema = new SimpleSchema({
-  id: { type: String },
+const AnnotationsSchema = new SimpleSchema({
+  _id: { type: String },
+  storyId: { type: String },
   quote: { type: String },
   ranges: { type: [Object], blackbox: true },
   text: { type: String },
   createdBy: { type: String },
   createdAt: { type: Date },
-  updatedAt: { type: Date }  
-});
-
-const AnnotationsSchema = new SimpleSchema({
-  _id: { type: String },
-  storyId: { type: String },
-  annotations: { type: [AnnotationSchema], blackbox: true }
+  updatedAt: { type: Date }
 });
 
 
