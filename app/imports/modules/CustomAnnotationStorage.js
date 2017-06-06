@@ -10,19 +10,16 @@
 export default ({ story, annotations }) => {
   return {
     create(annotation) {
-      console.debug('create', annotation);
       Meteor.call('createStoryAnnotation', story, annotation);
       return annotation;
     },
     
     update(annotation) {
-      console.debug('update', annotation);
       Meteor.call('updateStoryAnnotation', story, annotation);
       return annotation;
     },
     
     delete(annotation) {
-      console.debug('delete', annotation);
       Meteor.call('deleteStoryAnnotation', story, annotation);
       return annotation;
     },
@@ -32,7 +29,6 @@ export default ({ story, annotations }) => {
         return { results: queryObj };
       }
       if (annotations) {
-        console.log('ann', annotations);
         return { results: annotations };
       }
       
@@ -51,7 +47,6 @@ export const UserUtil = () => {
       annotation.createdAt = new Date();
       annotation.updatedAt = new Date();
       annotation.createdBy = Meteor.userId();
-      console.log('beforeAnnotationCreated', annotation);
     },
     
     beforeAnnotationUpdated(annotation) {

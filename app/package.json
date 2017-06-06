@@ -8,6 +8,7 @@
     "annotator": "^2.0.0-alpha.3",
     "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.2",
+    "cheerio": "^1.0.0-rc.1",
     "feedjett": "0.0.8",
     "fibers": "^1.0.15",
     "jquery-validation": "^1.16.0",
