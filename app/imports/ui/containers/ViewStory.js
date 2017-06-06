@@ -16,9 +16,7 @@ const composer = ({ url, location, ...props }, onData) => {
     }
     return;
   });
-  
-  
-  onData(null, { url, location, link, ...props, loading: true });
+
 };
 
 export default composeWithTracker(composer, Loading)(ViewStory);
