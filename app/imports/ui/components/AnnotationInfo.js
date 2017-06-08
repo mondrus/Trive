@@ -8,10 +8,10 @@ class AnnotationInfo extends Component {
   }
   
   render() {
-    const { annotation } = this.props;
+    const { annotation, style } = this.props;
 
     return (
-      <Row className="annotation-item">
+      <Row className="annotation-item" style={style}>
         <Col md={12} className="annotation-header">
           <div className="pull-left username">{annotation.createdBy}</div>
           <div className="pull-right date-create">{formatDate(annotation.createdAt)}</div>

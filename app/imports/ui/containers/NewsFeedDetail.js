@@ -14,21 +14,22 @@ import NewsFeedDetail from '../components/NewsFeedDetail';
 import Loading from '../components/Loading.js';
 
 const composer = ({ feed, ...props }, onData) => {
-  const handle = Meteor.subscribe('annotations', feed);
+  const handle = Meteor.subscribe('annotations', { web_uri: feed.link });
   
   if (handle.ready()) {
-    const ann = Annotations.findOne();
+    // TODO: search with the storyId with { web_uri: feed.link }
+    const annotations = Annotations.find().fetch();
 
     onData(null, {
-      annotations: ann ? ann.annotations : [],
       annotationsLoading: false,
+      annotations,
       feed,
       ...props
     });
     return;
   }
 
-  onData(null, { feed, ...props, annotationsLoading: true });
+  // onData(null, { feed, ...props, annotationsLoading: true });
 };
 
 export default composeWithTracker(composer, Loading)(NewsFeedDetail);

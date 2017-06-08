@@ -38,7 +38,7 @@ class NewsRoomView extends Component {
 
     return (
       <Row className="fh-breadcrumb">
-        <Col md={2} style={{ padding: 0 }} className="white-bg full-height-scroll">
+        <Col md={3} style={{ padding: 0 }} className="white-bg full-height-scroll">
           <ul className="list-group elements-list">
             {articles.map((article, index) => (
               <li key={index} className="list-group-item">
@@ -54,7 +54,7 @@ class NewsRoomView extends Component {
           </ul>
         </Col>
 
-        <Col md={10} className="full-height">
+        <Col md={9} className="full-height">
           { feed ?
             <NewsFeedDetail feed={feed} />
           :

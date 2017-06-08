@@ -9,16 +9,12 @@
 
 import React from 'react';
 import formatDate from '../../modules/formatDate';
+import AnnotationInfo from './AnnotationInfo';
 
 export default ({ annotations }) => (
-  <div className="annnotations">
+  <div id="annotations">
     {annotations.map((annotation, index) => (
-      <div key={index} className="annotation-item">
-        <div className="annotation-text">{annotation.text}</div>
-        <div className="annotation-date">
-          <i className="fa fa-clock-o" />  {formatDate(annotation.createdAt)}
-        </div>
-      </div>
+      <AnnotationInfo key={index} annotation={annotation} style={{ width: '100%' }}/>
     ))}
   </div>
 );

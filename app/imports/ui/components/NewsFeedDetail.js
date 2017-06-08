@@ -15,7 +15,7 @@ import Annotations from '/lib/collections/annotations';
 import AnnotationStorage, { UserUtil } from '../../modules/CustomAnnotationStorage';
 import annotatorMarginalia from '../../modules/annotator.maginalia';
 import AnnotationsList from './AnnotationsList';
-import FeedFrame from '../containers/FeedFrame';
+import QueryLink from '../components/QueryLink';
 
 const dummyFeed = {
   customProp: "customProp!",
@@ -30,43 +30,10 @@ const dummyFeed = {
 class NewsFeedDetail extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showAnnotations: false,
-      annotations: []
-    };
-
-    this.app = new Annotator.App();
-    this.app.include(UserUtil);
-    this.showAnnotations = this.showAnnotations.bind(this);
-  }
-
-  showAnnotations() {
-    this.setState({ showAnnotations: !this.state.showAnnotations });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { feed, annotationsLoading, annotations } = nextProps;
-
-    if (!annotationsLoading) {
-      const ann = Annotations.findOne();
-      const annotations = ann ? ann.annotations : [];
-      
-      this.setState({ annotations });
-
-      this.app.include(AnnotationStorage, {
-        story: feed,
-        annotations
-      });
-
-      this.app.annotations.load(annotations);
-    }
   }
   
   render() {
-    let { feed, annotationsLoading } = this.props;
-    const { showAnnotations, annotations } = this.state;
-    
+    let { feed, annotationsLoading, annotations } = this.props;    
     feed = feed ? feed : dummyFeed;
 
     return (
@@ -74,66 +41,47 @@ class NewsFeedDetail extends Component {
         <Row>
           <Col md={12}>
             <Panel>
-              <b>{feed.title}</b>
-              <ButtonToolbar className="pull-right">
-                <Button
-                  bsSize="xsmall"
-                  bsStyle="primary"
-                  disabled={annotationsLoading}
-                  onClick={this.showAnnotations}
+              <div className="pull-left">
+                <b>{feed.title}</b>
+              </div>
+              <div className="pull-right">
+                <QueryLink
+                  to={{
+                    pathname: '/view-story',
+                    query: { link: feed.link }
+                  }}
+                  target="blank"
                 >
-                  { !annotationsLoading ?
-                    `${showAnnotations ? 'Hide' : 'Show'} Annotations (${annotations.length})`
-                  : 
-                    <span>
-                      Loading  <span className="loading dots" />
-                    </span>
-                  }
-                </Button>
-              </ButtonToolbar>
+                  View Story
+                </QueryLink>
+                <b> Annotations </b>
+                <span>{annotations.length}</span>
+              </div>
             </Panel>
           </Col>
         </Row>
-        <div className="row">
-          <div className="col-lg-12">
+        <Row>
+          <Col lg={12}>
             <Row>
-              <Col md={!showAnnotations ? 12 : 9} id="currentFeed">
-                <FeedFrame url={feed.link}/>
-              </Col>
-              {showAnnotations &&
-              <Col md={3} >
+              <Col md={7} id="currentFeed">
                 <AnnotationsList annotations={annotations}/>
-              </Col>}
+              </Col>
+              <Col md={5}>
+                <p>
+                  Visit Annotation context
+                </p>
+                <p>
+                  Annotators
+                </p>
+                <p>
+                  Url
+                </p>
+              </Col>
             </Row>
-            <div className="ibox-footer">
-              <span className="pull-right">
-                <i className="fa fa-clock-o"></i> {`${feed.pubDate}`}
-              </span>
-              <div className="clearfix" />
-            </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     );
-  }
-  
-  componentDidMount() {
-    const { feed } = this.props;
-    const ann = Annotations.findOne();
-    
-    this.app.include(Annotator.ui.main, {
-      element: document.getElementById('currentFeed')
-    });
-
-    this.app.include(AnnotationStorage, {
-      story: feed,
-      annotations: ann ? ann.annotations : []
-    });
-
-    this.app.start()
-    .then(() => {
-      this.app.annotations.load();
-    });
   }
 }
 
