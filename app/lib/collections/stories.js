@@ -10,12 +10,17 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+// const NewsStoriesSchema = new SimpleSchema({
+//   _id: { type: String },
+//   link: { type: String },
+//   guid: { type: String },
+//   meta: { type: Object },
+//   pubDate: { type: Object }
+// });
+
 const NewsStoriesSchema = new SimpleSchema({
-  _id: { type: String },
-  link: { type: String },
-  guid: { type: String },
-  meta: { type: Object },
-  pubDate: { type: Object }
+  web_uri: { type: String },
+  title: { type: String },
 });
 
 
