@@ -9,13 +9,28 @@
 
 import Annotations from '/lib/collections/annotations';
 import NewsStories from '/lib/collections/stories';
+import { Meteor } from 'meteor/meteor';
+import { publishComposite } from 'meteor/reywood:publish-composite';
 
-Meteor.publish('annotations', function({ web_uri }) {
-  const selector = { web_uri };
-  const newsStory = NewsStories.findOne(selector, { fields: { _id: 1 } });
-  
-  if (newsStory) {
-    return Annotations.find({ storyId: newsStory._id });
+
+publishComposite('annotations', function({ web_uri }) {
+  return {
+    find() {
+      return NewsStories.find({ web_uri });
+    },
+    children: [
+      {
+        find({ _id }) {
+          return Annotations.find({ storyId: _id });
+        },
+        children: [
+          {
+            find({ createdBy }) {
+              return Meteor.users.find(createdBy);
+            }
+          }
+        ]
+      }
+    ],
   }
-  return this.ready();
 });

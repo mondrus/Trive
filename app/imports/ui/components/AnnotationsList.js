@@ -13,8 +13,16 @@ import AnnotationInfo from './AnnotationInfo';
 
 export default ({ annotations }) => (
   <div id="annotations">
-    {annotations.map((annotation, index) => (
-      <AnnotationInfo key={index} annotation={annotation} style={{ width: '100%' }}/>
-    ))}
+    {annotations.length > 0 ?
+      <div>
+        {annotations.map((annotation, index) => (
+          <AnnotationInfo key={index} annotation={annotation} style={{ width: '100%' }}/>
+        ))}
+      </div>
+    :
+      <div>
+        No annotations yet
+      </div>
+    }
   </div>
 );
